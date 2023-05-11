@@ -1,0 +1,37 @@
+baseURL = 'http://gohugo.io/'
+languageCode = 'en-us'
+theme = "nightfall"
+
+[menu]
+  [[menu.header]]
+    name = "Post"
+    weight = 0
+    url = "posts"
+
+[params]
+author = "Enes HAZIR"
+user = "ehazir"
+#hostname = "42.fr"
+
+readingTime = true  # Show reading time on post page
+published = true  # Show published data on post page
+
+[[params.social]]
+key = 0
+name = "Github"
+url = "https://github.com/yazilimfuryasi"
+
+[[params.social]]
+key = 1
+name = "Instagram"
+url = "https://www.instagram.com/eneshazr"
+
+[[params.social]]
+key = 2
+name = "Linkedin"
+url = "https://www.linkedin.com/in/eneshazr"
+
+[[params.social]]
+key = 3
+name = "Email"
+url = "mailto:eneshazrr@gmail.com"

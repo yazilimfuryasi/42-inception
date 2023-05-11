@@ -1,0 +1,135 @@
+# Bu dosyanın sürümü
+version: '3'
+
+# Hizmetlerin(Konteyner) ayarları
+services:
+  nginx:
+      # Oluşturulacak Konteyner Adı
+      container_name: nginx
+
+      # Dockerfile dosya yolu
+      build: ./requirements/nginx
+
+      # Konteyneri başlatmadan önce bağlı olduğu konteynerleri belirtir.
+  # Eğer bonus kısmını yapmayacaksanız bu kısmı yazmayın.
+      depends_on:
+        - adminer
+        - redis
+        - hugo
+
+      # Bağlantı sağlanacak port
+      ports:
+        - 443:443
+
+      # Dosyaların saklanacak dizini
+      volumes:
+        - wordpress_data:/var/www/html
+
+      # Konteynerin otomatik olarak yeniden başlat
+      restart: always
+
+      # Konteynerin bağlı olduğu ağ
+      networks:
+        - network
+
+  mariadb:
+    container_name: mariadb
+    build: ./requirements/mariadb
+    volumes:
+      - mariadb_data:/var/lib/mysql
+    networks:
+      - network
+    restart: always
+
+    # .env dosyasında ki verileri ortam değişkenlerine atar
+    env_file:
+      - .env
+
+  wordpress:
+    container_name: wordpress
+    depends_on:
+      - mariadb
+    build:
+      context: ./requirements/wordpress
+      dockerfile: Dockerfile
+    restart: always
+    env_file:
+      - .env
+    volumes:
+      - wordpress_data:/var/www/html
+    networks:
+      - network
+
+#BONUS PART
+  redis:
+    container_name: redis
+    build: ./requirements/bonus/redis
+    depends_on:
+      - wordpress
+    ports:
+     - '6379:6379'
+    restart: always
+    env_file:
+      - .env
+    volumes:
+      - wordpress_data:/var/www/html
+    networks:
+      - network
+
+  ftp-server:
+    build: requirements/bonus/ftp_server
+    container_name: ftp-server
+    ports:
+      - "21:21"
+      - "21100-21110:21100-21110"
+    volumes:
+      - "wordpress_data:/var/www/html"
+    networks:
+      - network
+    restart: always
+    env_file:
+      - .env
+
+  adminer:
+    build: ./requirements/bonus/adminer
+    restart: always
+    depends_on:
+      - mariadb
+    expose:
+     - "9000"
+    networks:
+      - network
+
+  hugo:
+    container_name: hugo
+    build: ./requirements/bonus/hugo
+    restart: always
+    networks:
+      - network
+
+  static_page:
+    container_name: static_page
+    build: ./requirements/bonus/static_page
+    restart: always
+    networks:
+      - network
+      
+# İki konteyner arasında bağlantı sağlar
+volumes:
+  mariadb_data:
+    driver: local
+    driver_opts:
+      type: none
+      device: /home/data/mysql
+      o: bind
+  wordpress_data:
+    driver: local
+    driver_opts:
+      type: none
+      device: /home/data/wordpress
+      o: bind
+      
+# Varsayılan ağ sürücüsüne bağlanır
+networks:
+  network:
+    driver: bridge
