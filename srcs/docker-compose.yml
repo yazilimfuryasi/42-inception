@@ -114,7 +114,7 @@ services:
     networks:
       - network
       
-# İki konteyner arasında bağlantı sağlar
+# Hizmet verilerini saklar ve ana sistem ile bağlantı kurar.
 volumes:
   mariadb_data:
     driver: local
