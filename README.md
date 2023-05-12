@@ -2,9 +2,10 @@
 
 Tüm kurulum adımlarını buradan okuyabilirsiniz.
 
-<a target="_blank" href="[https://github-readme-medium-recent-article.vercel.app/medium/@imantumorang/42kocaeli-inception-projesi-docker-wordpress-mariadb-eef9c025e79f](https://github-readme-medium-recent-article.vercel.app/medium/@eneshazr/0)](https://github-readme-medium-recent-article.vercel.app/medium/@eneshazr/0)"><img src="https://github-readme-medium-recent-article.vercel.app/medium/@eneshazr/0" alt="Recent Article 0">
 
-    
+<a target="_blank" href="https://eneshazr.medium.com/42kocaeli-inception-projesi-docker-wordpress-mariadb-eef9c025e79f"><img target="_blank" src="https://github-production-user-asset-6210df.s3.amazonaws.com/84662757/237968037-a6ba85df-3f46-4d55-b004-d8640938e840.png"></a>
+
+
 ## 🚀 Çalıştırmak İçin
 <p>make ve docker kurulu değilse bu adımı uygulayın</p>
     
