@@ -1,4 +1,4 @@
-# 42Kocaeli Inception Projesi [![ehazir's 42 Born2beroot Score](https://badge42.vercel.app/api/v2/clb293iz600110fl43cpx6160/project/2525969)](https://github.com/JaeSeoKim/badge42)
+# 42Kocaeli Inception Projesi ![ehazir's 42 Born2beroot Score](https://badge42.vercel.app/api/v2/clb293iz600110fl43cpx6160/project/2525969)
 
 Tüm kurulum adımlarını buradan okuyabilirsiniz.
 
