@@ -17,7 +17,7 @@ services:
         - redis
         - hugo
 
-      # Bağlantı sağlanacak port
+      # Dinlenilecek : Yönlendirilecek portlar
       ports:
         - 443:443
 
